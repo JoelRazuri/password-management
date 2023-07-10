@@ -9,37 +9,84 @@
         ingresó o no la contraseña correctamente, mediante un valor booleano (True o False).
 """
 
-def contraseña(password):
+from time import sleep
 
-    valido=False
 
-    while valido==False:
-        contraseña=input("Ingrese la contraseña:")
+def contrasenia(password):
 
-        if contraseña==password:
+    valido = False
+
+    while not valido:
+        contrasenia = input("Ingrese la contraseña:")
+
+        if contrasenia == password:
             valido=True
             print("Contraseña correcta. Puede seguir con el programa.")
         else:
             print("Contraseña incorrecta. Vuelva a ingresar.")
 
-# contraseña("joel") 
+# contrasenia("contrasenia") 
 
-def contraseña_con_intentos(password):
+def contrasenia_con_intentos(password):
 
-    valido=False
-    intentos=3
+    valido = False
+    intentos = 3
 
-    while valido==False and intentos!=0:
-        contraseña=input(f"Ingrese la contraseña(intentos: {intentos}):")
+    while not valido and intentos!=0:
+        contrasenia=input(f"Ingrese la contraseña(intentos: {intentos}):")
 
-        if contraseña==password:
+        if contrasenia == password:
             valido=True
             print("Contraseña correcta. Puede seguir con el programa.")
         else:
             intentos-=1
             print("Contraseña incorrecta.")
-            if intentos==0:
-                print("Se acabaron los intentos.")
 
-# contraseña_con_intentos("joel1234")
+    if intentos == 0:
+        print("Se acabaron los intentos.")
 
+# contrasenia_con_intentos("contrasenia")
+
+def contrasenia_con_intentos_sleep(password):
+
+    valido = False
+    intentos = 3
+    retraso = 0
+
+    while not valido and intentos!=0:
+        contrasenia = input(f"Ingrese la contraseña(intentos: {intentos}):")
+
+        if contrasenia == password:
+            valido=True
+            print("Contraseña correcta. Puede seguir con el programa.")
+        else:
+            intentos-=1
+            retraso+=1
+            print("Contraseña incorrecta.")
+            sleep(retraso)
+
+    if intentos == 0:
+        print("Se acabaron los intentos.")
+
+# contrasenia_con_intentos_sleep('contrasenia')
+
+
+def contrasenia_con_intentos_sleep_boolean(password):
+    valido = False
+    intentos = 3
+    retraso = 0
+
+    while not valido and intentos!=0:
+        contrasenia = input(f"Ingrese la contraseña(intentos: {intentos}):")
+
+        if contrasenia == password:
+            valido = True
+            return valido
+        else:
+            intentos-=1
+            retraso+=1
+            sleep(retraso)
+    
+    return valido
+
+# contrasenia_con_intentos_sleep_boolean('contrasenia')
